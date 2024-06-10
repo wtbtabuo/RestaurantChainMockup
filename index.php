@@ -10,12 +10,11 @@ $max = $_GET['max'] ?? 5;
 $min = (int)$min;
 $max = (int)$max;
 
-// サンプルデータを生成
-$restaurantChains = [
-    RestaurantChain::RandomGenerator(),
-    RestaurantChain::RandomGenerator(),
-    RestaurantChain::RandomGenerator(),
-];
+// minとmaxの間でランダムな数を生成し、その数だけRestaurantChainオブジェクトを生成
+$restaurantChains = [];
+for ($i = 0; $i < rand($min, $max); $i++) {
+    $restaurantChains[] = RestaurantChain::RandomGenerator();
+}
 
 ?>
 

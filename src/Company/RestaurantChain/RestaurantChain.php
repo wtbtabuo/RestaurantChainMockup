@@ -62,7 +62,7 @@ class RestaurantChain extends Company implements FileConvertible{
     }
 
     public function getCompanyName(): string {
-        return $this->parentCompany->getCompanyName();
+        return $this->parentCompany;
     }
 
     public function getCompanyDescription(): string {
@@ -98,7 +98,19 @@ class RestaurantChain extends Company implements FileConvertible{
     }
 
     public function toHTML(): string {
-        return "<h1>Restaurant Chain</h1><p>Chain ID: $this->chainId</p><p>Restaurant Location: $this->restaurantLocation</p><p>Cuisine Type: $this->cuisineType</p><p>Number of Locations: $this->numberOfLocations</p><p>Parent Company: $this->parentCompany</p>";
+        $restaurantLocationsHTML = '';
+        foreach ($this->restaurantLocations as $restaurantLocation) {
+            $restaurantLocationsHTML .= $restaurantLocation->toHTML();
+        }
+
+        return "<div class='restaurant-chain'>
+                <h1>{$this->parentCompany}</h1>
+                <p>Chain ID: {$this->chainId}</p>
+                <p>Cuisine Type: {$this->cuisineType}</p>
+                <h4>Restaurant Locations:</h4>
+                <div class='restaurant</div>
+                {$restaurantLocationsHTML}
+                </div>";
     }
 
     public function toMarkdown(): string {

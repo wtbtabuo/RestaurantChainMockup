@@ -90,7 +90,6 @@ class RestaurantLocation implements FileConvertible {
                 <p>Zip Code: {$this->zipCode}</p>
                 <p>Is Open: " . ($this->isOpen ? 'Yes' : 'No') . "</p>
                 <p>Has Drive Through: " . ($this->hasDriveThrough ? 'Yes' : 'No') . "</p>
-                <h4>Employees:</h4>
                 <div class='employees'>{$employeesHTML}</div>
                 </div>";
     }

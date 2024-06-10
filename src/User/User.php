@@ -1,5 +1,4 @@
 <?php
-
 namespace User;
 
 use DateTime;
@@ -51,6 +50,14 @@ class User implements FileConvertible {
         );
     }
 
+    public function getFirstName(): string {
+        return $this->firstName;
+    }
+
+    public function getLastName(): string {
+        return $this->lastName;
+    }
+
     public function logIn(string $hashedPassword): bool {
         return $this->hashedPassword === $hashedPassword;
     }
@@ -90,7 +97,7 @@ class User implements FileConvertible {
     }
 
     public function toMarkdown(): string {
-        return "###User
+        return "### User
                 - First Name: $this->firstName
                 - Last Name: $this->lastName
                 - Email: $this->email

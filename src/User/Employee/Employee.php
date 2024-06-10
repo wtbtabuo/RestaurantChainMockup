@@ -1,5 +1,4 @@
 <?php
-
 namespace Employee;
 
 use Interfaces\FileConvertible;
@@ -7,7 +6,7 @@ use User\User;
 use DateTime;
 
 class Employee extends User implements FileConvertible {
-    private string $JobTitle;
+    private string $jobTitle;
     private float $salary;
     private DateTime $startDate;
     private string $awards;
@@ -17,14 +16,14 @@ class Employee extends User implements FileConvertible {
         string $hashedPassword, string $phoneNumber, string $address,
         DateTime $birthDate, DateTime $membershipExpirationDate,
         string $role,
-        string $JobTitle, float $salary, DateTime $startDate,
+        string $jobTitle, float $salary, DateTime $startDate,
         string $awards
     ) {
         parent::__construct(
             $id, $firstName, $lastName, $email, $hashedPassword,
             $phoneNumber, $address, $birthDate, $membershipExpirationDate, $role
         );
-        $this->JobTitle = $JobTitle;
+        $this->jobTitle = $jobTitle;
         $this->salary = $salary;
         $this->startDate = $startDate;
         $this->awards = $awards;
@@ -51,7 +50,7 @@ class Employee extends User implements FileConvertible {
     }
 
     public function getJobTitle(): string {
-        return $this->JobTitle;
+        return $this->jobTitle;
     }
 
     public function getSalary(): float {
@@ -67,20 +66,21 @@ class Employee extends User implements FileConvertible {
     }
 
     public function toString(): string {
-        return "Job Title: $this->JobTitle, Salary: $this->salary, Start Date: {$this->startDate->format('Y-m-d')}, Awards: $this->awards";
+        return "Job Title: $this->jobTitle, Salary: $this->salary, Start Date: {$this->startDate->format('Y-m-d')}, Awards: $this->awards";
     }
 
     public function toHTML(): string {
         return "<h2>Employee</h2>
                 <p>Job Title: $this->jobTitle</p>
+                <p>Name: " . $this->getFirstName() . " " . $this->getLastName() . "</p>
                 <p>Salary: $this->salary</p>
                 <p>Start Date: {$this->startDate->format('Y-m-d')}</p>
                 <p>Awards: $this->awards</p>";
     }
 
     public function toMarkdown(): string {
-        return "###Employee
-                - Job Title: $this->JobTitle
+        return "### Employee
+                - Job Title: $this->jobTitle
                 - Salary: $this->salary
                 - Start Date: {$this->startDate->format('Y-m-d')}
                 - Awards: $this->awards";
@@ -88,7 +88,7 @@ class Employee extends User implements FileConvertible {
 
     public function toArray(): array {
         return [
-            'jobTitle' => $this->JobTitle,
+            'jobTitle' => $this->jobTitle,
             'salary' => $this->salary,
             'startDate' => $this->startDate,
             'awards' => $this->awards
