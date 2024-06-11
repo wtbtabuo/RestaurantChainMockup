@@ -6,7 +6,7 @@ body {
     padding: 20px;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     text-align: center;
     margin: 20px 0;
 }
@@ -24,10 +24,10 @@ h1, h2, h3 {
 }
 
 .restaurant-location, .employee {
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 15px 0;
     background-color: #f9f9f9;
-    margin: 10px 0;
-    padding: 10px;
     border-radius: 5px;
 }
 
@@ -37,4 +37,30 @@ h1, h2, h3 {
 
 p {
     margin: 5px 0;
+}
+
+.restaurant-location h1 {
+    font-size: 1.5em;
+}
+
+.restaurant-location p {
+    margin: 5px 0;
+}
+
+.restaurant-location .employees {
+    margin-top: 10px;
+}
+
+.toggle-button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
 }

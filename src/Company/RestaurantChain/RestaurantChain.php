@@ -107,8 +107,7 @@ class RestaurantChain extends Company implements FileConvertible{
                 <h1>{$this->parentCompany}</h1>
                 <p>Chain ID: {$this->chainId}</p>
                 <p>Cuisine Type: {$this->cuisineType}</p>
-                <h4>Restaurant Locations:</h4>
-                <div class='restaurant</div>
+                <h3>Restaurant Locations:</h3>
                 {$restaurantLocationsHTML}
                 </div>";
     }

@@ -83,15 +83,33 @@ class RestaurantLocation implements FileConvertible {
             $employeesHTML .= $employee->toHTML();
         }
         return "<div class='restaurant-location'>
-                <h1>{$this->name}</h1>
-                <p>Address: {$this->address}</p>
-                <p>City: {$this->city}</p>
-                <p>State: {$this->state}</p>
-                <p>Zip Code: {$this->zipCode}</p>
-                <p>Is Open: " . ($this->isOpen ? 'Yes' : 'No') . "</p>
-                <p>Has Drive Through: " . ($this->hasDriveThrough ? 'Yes' : 'No') . "</p>
-                <div class='employees'>{$employeesHTML}</div>
-                </div>";
+                    <h1>{$this->name}</h1>
+                    <p>Address: {$this->address}</p>
+                    <p>City: {$this->city}</p>
+                    <p>State: {$this->state}</p>
+                    <p>Zip Code: {$this->zipCode}</p>
+                    <p>Is Open: " . ($this->isOpen ? 'Yes' : 'No') . "</p>
+                    <p>Has Drive Through: " . ($this->hasDriveThrough ? 'Yes' : 'No') . "</p>
+                    <button class='toggle-button'>Show Employees</button>
+                    <div class='employees' style='display: none;'>{$employeesHTML}</div>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var buttons = document.querySelectorAll('.toggle-button');
+                        buttons.forEach(function(button) {
+                            button.addEventListener('click', function() {
+                                var employeesDiv = this.nextElementSibling;
+                                if (employeesDiv.style.display === 'none') {
+                                    employeesDiv.style.display = 'block';
+                                    this.textContent = 'Hide Employees';
+                                } else {
+                                    employeesDiv.style.display = 'none';
+                                    this.textContent = 'Show Employees';
+                                }
+                            });
+                        });
+                    });
+                </script>";
     }
 
     public function toMarkdown(): string {
